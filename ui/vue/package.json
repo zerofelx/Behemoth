@@ -1,11 +1,12 @@
 {
-  "name": "frontend",
+  "name": "behemoth",
   "version": "0.1.0",
   "scripts": {
     "build": "webpack"
   },
   "dependencies": {
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.3"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.3",

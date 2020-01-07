@@ -1,15 +1,16 @@
 <template>
   <main>
-    <hora />
+    <router-view />
   </main>
 </template>
 
 <script>
-import Hora from './components/Hora.vue'
+import api from "./api";
+
 export default {
   name: 'App',
-  components: {
-    Hora
+  created: function() {
+      this.$router.push('/');
   }
 }
 </script>
