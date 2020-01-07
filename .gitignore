@@ -1,0 +1,11 @@
+# Ignorando gotron
+.gotron
+
+# Ignorando módulos
+ui/node_modules
+ui/UsersUsuarioAppDataRoamingnpm
+
+# Ignorando módulos de Vue
+ui/vue/build
+ui/vue/node_modules
+ui/vue/UsersUsuarioAppDataRoamingnpm
