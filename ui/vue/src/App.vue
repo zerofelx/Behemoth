@@ -5,12 +5,10 @@
 </template>
 
 <script>
-import api from "./api";
-
 export default {
   name: 'App',
   created: function() {
-      this.$router.push('/');
+      this.$router.push('/Login');
   }
 }
 </script>
@@ -20,10 +18,6 @@ export default {
   body {
     margin: 0;
     font-family: 'Montserrat'
-  }
-
-  .topic {
-    color: #3a2c38;
   }
   a {
       text-decoration: none;

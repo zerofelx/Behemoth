@@ -4,9 +4,13 @@ import (
 	"log"
 
 	"github.com/Equanox/gotron"
+	"github.com/zerofelx/Behemoth/events"
+	"github.com/zerofelx/Behemoth/hour"
+	"github.com/zerofelx/Behemoth/sources"
 )
 
 func main() {
+	go hour.RestAPI()
 
 	window, err := gotron.New("ui/build")
 	if err != nil {
@@ -23,6 +27,8 @@ func main() {
 		log.Println(err)
 		return
 	}
+	events.ExecChrome(window)
+	events.LoginEvent(window)
 
 	onEvent := gotron.Event{Event: "hello"}
 
@@ -33,6 +39,8 @@ func main() {
 	})
 
 	//window.OpenDevTools()
+
+	go func() { sources.ServeSources() }()
 
 	<-done
 }

@@ -14,10 +14,3 @@ window.onload = function () {
     template: '<App/>'
   })
 }
-
-//Reload on keypress 'r'
-document.addEventListener('keyup', function(e){
-if(e.keyCode == 82)
-window.location.reload();
-})
-

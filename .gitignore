@@ -1,5 +1,7 @@
 # Ignorando gotron
 .gotron
+gotron-builder.exe
+dist
 
 # Ignorando módulos
 ui/node_modules
@@ -9,3 +11,14 @@ ui/UsersUsuarioAppDataRoamingnpm
 ui/vue/build
 ui/vue/node_modules
 ui/vue/UsersUsuarioAppDataRoamingnpm
+
+# Ignorando keys
+key/key.go
+key
+
+# Ignorando Assets (Binary files)
+Assets
+
+# Otras cosas
+data 
+asd.html
