@@ -1,11 +1,20 @@
 <template>
     <div :style="BGPath" id="LoginContainer">
+        <single-popup 
+            :Message="LoginIncorrect"
+            :Show="Show"
+            @change-show="ToggleShow"
+        >
+        </single-popup>
+        <Loading
+            :Loading="Loading"
+        ></Loading>
         <div id="Login">
             <label for="Username">Nombre o Correo</label>
             <input name="Username" placeholder="Username" type="text" v-model="user"/>
             <label for="Password">Contraseña</label>
             <input name="Password" placeholder="Password" type="password" v-model="password"/>
-            <input type="button" value="send" @click="UserLogin(user, password)">
+            <input type="button" value="Iniciar Sesión" @click="UserLogin(user, password)">
         </div>
     </div>
 </template>
@@ -14,24 +23,41 @@
 import api from '../api.js'
 import setb from '../setb.js'
 import getb from '../getb.js'
+import SinglePopup from '../components/alerts/SinglePopup'
+import Loading from '../components/alerts/Loading'
 
 export default {
     name: 'Login',
+    components: {
+        SinglePopup,
+        Loading
+    },
     data() {
         return {
             user: '',
             password: '',
-            BGPath: 'background-image: url("http://localhost/sources/images/LoginBG.jpg");'
+            BGPath: 'background-image: url("http://localhost/sources/images/LoginBG.jpg");',
+            LoginIncorrect: "Error",
+            Show: false,
+            Loading: false
         }
     },
     methods: {
         UserLogin(u, p) {
-            setb.Login(u, p)
-            getb.Login(this.$router)
+            this.ToggleLoading()
+            setb.Login(u, p, this.ToggleShow, this.ToggleLoading)
+            getb.Login(this.$router, this.ToggleShow, this.ToggleLoading)
+        },
+        ToggleShow(message) {
+            this.LoginIncorrect = message
+            this.Show = !this.Show
+        },
+        ToggleLoading() {
+            this.Loading = !this.Loading
         }
+
     }
 }
-fetch('http://localhost/Logged').then(res => res.json())
 </script>
 
 <style scoped>

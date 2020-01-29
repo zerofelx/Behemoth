@@ -3,7 +3,6 @@ package events
 import (
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zerofelx/Behemoth/database"
 
@@ -26,8 +25,6 @@ func LoginEvent(window *gotron.BrowserWindow) {
 		go func() {
 			verify <- database.QueryPassword(User[0], User[1])
 		}()
-
-		time.Sleep(1 * time.Second)
 
 		log := <-verify
 

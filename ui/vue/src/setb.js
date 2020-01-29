@@ -11,7 +11,7 @@ function Evento(v) {
     }
 }
 
-function Login(user, password) {
+function Login(user, password, ToggleShow, Loading) {
     console.log('Iniciando Login')
     if (user != '' && password != '') {
         var v = user + '|' + password
@@ -20,7 +20,8 @@ function Login(user, password) {
             variables: v
         }))
     } else {
-        alert('Error')
+        Loading()
+        ToggleShow("Los campos de usuario y contraseña están vacíos!")
     }
 }
 

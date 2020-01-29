@@ -10,14 +10,16 @@ function GetEvent() {
     }
 }
 
-function Login(router) {
+function Login(router, ToggleShow, FinishLoading) {
     ws.onmessage = (message) => {
         let obj = JSON.parse(message.data)
 
         if (obj.logged == true) {
+            FinishLoading()
             router.push('/')
         } else {
-            alert('error')
+            FinishLoading()
+            ToggleShow("El usuario o la contraseña son inválidos")
         }
     }
 }
